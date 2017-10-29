@@ -1,5 +1,10 @@
 extends layout
 
 block content
+  - const endOfDay = h.moment().endOf('day')
+  - const nowMoment = h.moment().valueOf()
+  - const hoursLeft = endOfDay.diff(nowMoment, 'hours')
+
   p Hello, #{name}!
   p My dog's name is #{dogName}
+  p The new day starts in #{hoursLeft === 1 ? `${hoursLeft} hour` : `${hoursLeft} hours`}

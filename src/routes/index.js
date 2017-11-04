@@ -4,5 +4,7 @@ const stroreController = require('../controllers/storeController');
 
 // Do work here
 router.get('/', stroreController.homePage);
+router.get('/add', stroreController.addStore);
+router.post('/add', stroreController.createStore);
 
 module.exports = router;

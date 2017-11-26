@@ -1,9 +1,14 @@
 mixin storeForm(store = {})
-  form(class="card" action=`/add/${store._id || ''}` method="POST")
+  form(class="card" action=`/add/${store._id || ''}` method="POST" enctype="multipart/form-data")
     label(for="name") Name
     input(id="name" name="name" type="text" value=store.name)
     label(for="description") Description
     textarea(id="description" name="description")= store.description
+    //- image upload
+    label(for="photo") Photo
+      input(id="photo" type="file" name="photo" accept="image/gif, image/png, image/jpeg")
+      if store.photo
+        img(src=`/uploads/${store.photo}`, alt=store.name width="200")
     //- address, lng and lat
     label(for="address") Address
     input(type="text" id="address" name="location[address]" placeholder="Enter a location" value=(store.location && store.location.address))

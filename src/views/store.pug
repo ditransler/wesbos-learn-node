@@ -1,6 +1,6 @@
 extends layout
 
-include mixins/_storeCard
+include mixins/_reviewForm
 
 block content
   .single
@@ -20,3 +20,7 @@ block content
           li.tag
             a.tag__link(href=`/tags/${tag}`)
               span.tag__text ##{tag}
+
+    if user
+      +reviewForm(store)
+
